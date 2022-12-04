@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace AoC2022Day1
@@ -12,10 +11,13 @@ namespace AoC2022Day1
     {
       var calories = TextFileParser.GetCalories();
 
-      var elves = calories.Select(CreateElf).ToArray();
+      var elves = calories.Select(CreateElf).ToList();
+      elves.Sort(new ElfCalorieComparer());
 
-      var elfWithMostCalories = elves.First(x => x.Calories == elves.Max(y => y.Calories));
-      Console.WriteLine($"Elf carrying the most calories: {elfWithMostCalories.Name}, calories: {elfWithMostCalories.Calories}");
+      Console.WriteLine($"1st elf carrying the most calories: {elves[0].Name}, calories: {elves[0].Calories}");
+      Console.WriteLine($"2nd elf carrying the most calories: {elves[1].Name}, calories: {elves[1].Calories}");
+      Console.WriteLine($"3rd elf carrying the most calories: {elves[2].Name}, calories: {elves[2].Calories}");
+      Console.WriteLine($"In total the 3 carries: {elves[0].Calories+elves[1].Calories+elves[2].Calories} calories");
     }
 
     static Elf CreateElf(int calories)
