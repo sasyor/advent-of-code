@@ -3,9 +3,9 @@ using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
 
-namespace AoC2022Day2
+namespace AoC2022Day2.PartOne
 {
-  public class TextFileParser
+  public static class TextFileParser
   {
     private static ImmutableDictionary<char, HandType> _opponentHandTypes = new Dictionary<char, HandType>
     {
@@ -23,11 +23,7 @@ namespace AoC2022Day2
 
     public static IEnumerable<(HandType Opponent, HandType User)> GetHands()
     {
-      return File.ReadLines("input.txt").Select(x =>
-      {
-        
-        return (opponent: _opponentHandTypes[x[0]], user: _userHandTypes[x[2]]);
-      });
+      return File.ReadLines("input.txt").Select(x => (opponent: _opponentHandTypes[x[0]], user: _userHandTypes[x[2]]));
     }
   }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AoC2022Day2
+namespace AoC2022Day2.PartOne
 {
   public  class Hand
   {
