@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Immutable;
+using System.Linq;
 
 namespace AoC2022Day3
 {
@@ -6,6 +8,8 @@ namespace AoC2022Day3
   {
     private readonly Compartment _leftCompartment;
     private readonly Compartment _rightCompartment;
+
+    public ImmutableArray<Item> Items => _leftCompartment.Items.Concat(_rightCompartment.Items).ToImmutableArray();
 
     public Rucksack(Compartment leftCompartment, Compartment rightCompartment)
     {

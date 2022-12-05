@@ -18,26 +18,7 @@ namespace AoC2022Day3
 
     public Item GetSharedItem(Compartment compartment)
     {
-      var otherItems = compartment.Items.Sort(ItemComparer);
-      var items = Items.Sort(ItemComparer);
-
-      foreach (var item in items)
-      {
-        foreach (var otherItem in otherItems)
-        {
-          if (item.Char == otherItem.Char)
-          {
-            return item;
-          }
-
-          if (item.Priority < otherItem.Priority)
-          {
-            break;
-          }
-        }
-      }
-
-      throw new InvalidOperationException();
+      return Item.GetSharedItem(new[] { Items.AsEnumerable(), compartment.Items });
     }
 
     public static Compartment Create(string input)
